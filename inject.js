@@ -5088,13 +5088,16 @@ Exeunt, with a dead march`
 		return "";
 	}
 	
-
+    const original = document.title;
 	
 	kinglear = splitMulti(kinglear, [" ",",",".","\n","!","?",":",";"]);
 	
 	function check(){
 		console.log("a");
-		document.title = getCharacter(kinglear, findSeq(kinglear, getSelectionText().split(" ")))
+		document.title = getCharacter(kinglear, findSeq(kinglear, splitMulti(getSelectionText(), [" ",",",".","\n","!","?",":",";"])))
+        if (getSelectionText() == "") {
+            document.title = original;
+        }
 	}
 	
 	document.onmouseup = check;
